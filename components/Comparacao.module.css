@@ -1,0 +1,72 @@
+.tabela {
+  --cel-x: clamp(14px, 3vw, 24px);
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid var(--linha);
+  overflow: hidden;
+}
+
+.thAntes,
+.thDepois {
+  padding: 16px var(--cel-x);
+  text-align: left;
+  font-size: 13px;
+}
+
+.thAntes {
+  background: var(--lilas);
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.thDepois {
+  background: var(--roxo);
+  font-weight: 700;
+  color: #fff;
+}
+
+.antes,
+.depois {
+  position: relative;
+  padding: 16px var(--cel-x) 16px calc(var(--cel-x) + 28px);
+  border-top: 1px solid var(--linha);
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.antes svg,
+.depois svg {
+  position: absolute;
+  left: var(--cel-x);
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.antes {
+  color: var(--texto-3);
+}
+
+.antes svg {
+  stroke: #b4aebc;
+  stroke-width: 2.2;
+}
+
+.depois {
+  background: var(--fundo);
+  font-weight: 500;
+}
+
+.depois svg {
+  stroke: var(--roxo);
+  stroke-width: 2.4;
+}

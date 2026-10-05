@@ -1,0 +1,95 @@
+/* Pontos de 560px do topo e 320px do fim do documento (body é o containing block). */
+.sentinelaInicio,
+.sentinelaFim {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.sentinelaInicio {
+  top: 560px;
+}
+
+.sentinelaFim {
+  bottom: 320px;
+}
+
+.barra {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: 12px clamp(12px, 3vw, 20px) calc(12px + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  /* Só transform/opacity: animação no compositor, sem layout. */
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.barra[data-visivel="true"] {
+  transform: none;
+  opacity: 1;
+}
+
+.barra[data-visivel="true"] .botao {
+  pointer-events: auto;
+}
+
+.botao {
+  width: min(100%, 480px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 60px;
+  padding: 0 10px 0 22px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--tinta);
+  box-shadow: 0 14px 34px rgba(37, 37, 37, 0.25);
+  transition: background 150ms;
+}
+
+.botao:hover {
+  background: var(--amarelo-claro);
+  color: var(--tinta);
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.cta {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 11.5px;
+  color: var(--texto-4);
+}
+
+.seta {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: var(--amarelo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+}

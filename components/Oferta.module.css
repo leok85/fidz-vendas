@@ -1,0 +1,180 @@
+.secao {
+  padding: 0 clamp(12px, 3vw, 28px) var(--secao-y);
+  scroll-margin-top: 24px;
+}
+
+.caixa {
+  max-width: var(--largura);
+  margin: 0 auto;
+  background: #fff;
+  border: 2px solid var(--roxo);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(107, 46, 186, 0.16);
+}
+
+.topo {
+  background: var(--roxo);
+  color: #fff;
+  padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titulo {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+}
+
+.coluna {
+  padding: clamp(22px, 4vw, 40px) clamp(20px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+}
+
+.incluidos {
+  composes: coluna;
+  gap: 12px;
+}
+
+.lista,
+.garantias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lista {
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.itemIcone {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--lilas-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.itemIcone svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: var(--roxo);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.preco {
+  composes: coluna;
+  gap: 18px;
+  background: var(--fundo);
+  border-left: 1px solid var(--linha);
+}
+
+.hoje,
+.depois {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.depois {
+  padding-top: 16px;
+  border-top: 1px solid rgba(37, 37, 37, 0.1);
+}
+
+.precoRotulo {
+  font-size: 13.5px;
+  color: var(--texto-3);
+}
+
+.zero {
+  font-size: clamp(44px, 7vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.mensal {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.porDia {
+  font-size: 13.5px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--texto-3);
+}
+
+.planos {
+  font-size: 12.5px;
+  color: var(--texto-3);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 60px;
+  border-radius: 999px;
+  background: var(--roxo);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background 150ms;
+}
+
+.cta:hover {
+  background: var(--roxo-escuro);
+  color: #fff;
+}
+
+.garantias {
+  gap: 8px;
+}
+
+.garantia {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--texto-4);
+}
+
+.garantiaIcone {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: none;
+  stroke: var(--roxo);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

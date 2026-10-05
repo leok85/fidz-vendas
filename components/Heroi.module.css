@@ -1,0 +1,127 @@
+.heroi {
+  background: var(--roxo);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.bolhaA {
+  width: 640px;
+  height: 640px;
+  background: rgba(255, 255, 255, 0.06);
+  right: -220px;
+  top: -240px;
+}
+
+.bolhaB {
+  width: 360px;
+  height: 360px;
+  background: rgba(255, 255, 255, 0.05);
+  left: -160px;
+  bottom: -200px;
+}
+
+.topo {
+  position: relative;
+  padding-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 20px;
+  display: flex;
+}
+
+.logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+
+.publico {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.grade {
+  position: relative;
+  padding-top: clamp(36px, 6vw, 72px);
+  padding-bottom: clamp(48px, 7vw, 88px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  gap: clamp(36px, 6vw, 56px);
+  align-items: center;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.h1 {
+  font-size: clamp(38px, 7vw, 64px);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.lead {
+  font-size: clamp(15.5px, 1.9vw, 18px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 520px;
+  text-wrap: pretty;
+}
+
+.acao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.garantia {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cartelaWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.cartela {
+  width: min(340px, 100%);
+  background: #fff;
+  color: var(--tinta);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 30px 70px rgba(24, 12, 40, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cartelaTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 2px;
+}
+
+.cartelaTitulo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cartelaConta {
+  font-size: 12.5px;
+  color: var(--texto-3);
+}
