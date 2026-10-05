@@ -67,10 +67,20 @@
   padding-top: 24px;
 }
 
-.rodape a {
+.rodape a,
+.preferencias {
   color: inherit;
 }
 
-.rodape a:hover {
+.preferencias {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.rodape a:hover,
+.preferencias:hover {
   color: #fff;
 }

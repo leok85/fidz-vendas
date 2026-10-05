@@ -1,4 +1,5 @@
 import { CADASTRO_URL, CTA, WHATSAPP_URL } from "@/lib/links";
+import PreferenciasCookies from "./PreferenciasCookies";
 import shared from "./shared.module.css";
 import styles from "./ChamadaFinal.module.css";
 
@@ -21,6 +22,7 @@ export default function ChamadaFinal() {
           <span>© 2026 Fidz · Kofe Dev Ltda. · CNPJ 47.596.402/0001-64</span>
           <a href="https://fidz.com.br/privacidade">Privacidade</a>
           <a href="https://fidz.com.br/termos-de-uso">Termos de uso</a>
+          <PreferenciasCookies className={styles.preferencias} />
         </footer>
       </div>
     </section>
