@@ -1,13 +1,20 @@
 // Escolha do visitante sobre cookies na landing. Fica no localStorage deste domínio e vale
 // 12 meses; depois disso, ou se a versão mudar, o aviso aparece de novo. A única categoria
-// opcional é "Publicidade" (Meta Pixel, lib/meta-pixel.ts). Mesmo modelo da Gestão.
+// opcional é "Publicidade" (Meta Pixel, lib/meta-pixel.ts, e tag do Google Ads, lib/google-ads.ts).
+// Mesmo modelo da Gestão.
 
 const STORAGE_KEY = "fidz_vendas_cookie_consent";
 const VALIDITY_MONTHS = 12;
-const CONSENT_VERSION = 1;
 
-// Sem NEXT_PUBLIC_META_PIXEL_ID não há o que pedir: o aviso nem aparece e publicidade fica recusada.
-export const ADVERTISING_ENABLED = Boolean(process.env.NEXT_PUBLIC_META_PIXEL_ID);
+// Cada ferramenta só existe com a sua variável configurada. Sem nenhuma das duas não há o que
+// pedir: o aviso nem aparece e publicidade fica recusada.
+export const META_PIXEL_ENABLED = Boolean(process.env.NEXT_PUBLIC_META_PIXEL_ID);
+export const GOOGLE_ADS_ENABLED = Boolean(process.env.NEXT_PUBLIC_GOOGLE_ADS_ID);
+export const ADVERTISING_ENABLED = META_PIXEL_ENABLED || GOOGLE_ADS_ENABLED;
+
+// Ligar o Google Ads sobe a versão para 2: quem aceitou "Publicidade" só com o Meta Pixel escolhe
+// de novo. Desligado, uma escolha da versão 2 continua valendo.
+const CONSENT_VERSION = GOOGLE_ADS_ENABLED ? 2 : 1;
 
 export interface CookieConsent {
   advertising: boolean;
