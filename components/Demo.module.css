@@ -136,3 +136,71 @@
 .cartela > :last-child {
   margin-top: auto;
 }
+
+.abas {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 999px;
+  background: #353238;
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.aba {
+  height: 44px;
+  padding: 0 clamp(14px, 3vw, 24px);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.aba[aria-pressed="true"] {
+  background: var(--amarelo);
+  color: var(--tinta);
+}
+
+.aba:focus-visible {
+  outline: 3px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+.pontos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cashback {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.valorGrande {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--roxo);
+  font-variant-numeric: tabular-nums;
+}
+
+.barra {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--lilas-2);
+  overflow: hidden;
+}
+
+.barraCheia {
+  height: 100%;
+  background: var(--amarelo);
+  border-radius: 999px;
+  transition: width 300ms;
+}

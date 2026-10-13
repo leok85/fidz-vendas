@@ -34,14 +34,24 @@ export function Selos({ cheios }: { cheios: number }) {
   );
 }
 
-export function FaixaRecompensa({ faltam, completa = false }: { faltam: string; completa?: boolean }) {
+export function FaixaRecompensa({
+  rotulo = "Recompensa",
+  nome = RECOMPENSA,
+  lado,
+  completa = false,
+}: {
+  rotulo?: string;
+  nome?: string;
+  lado: string;
+  completa?: boolean;
+}) {
   return (
     <div className={`${styles.faixa} ${completa ? styles.faixaCompleta : ""}`}>
       <div className={styles.faixaInfo}>
-        <span className={styles.faixaRotulo}>Recompensa</span>
-        <span className={styles.faixaNome}>{RECOMPENSA}</span>
+        <span className={styles.faixaRotulo}>{rotulo}</span>
+        <span className={styles.faixaNome}>{nome}</span>
       </div>
-      <span className={styles.faixaFaltam}>{faltam}</span>
+      <span className={styles.faixaFaltam}>{lado}</span>
     </div>
   );
 }

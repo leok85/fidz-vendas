@@ -5,7 +5,7 @@ import "./globals.css";
 // Self-hosted pelo next/font: sem request para o Google, com fallback ajustado (sem CLS).
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins",
   display: "swap",
 });
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#6B2EBA",
+  themeColor: "#252525",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

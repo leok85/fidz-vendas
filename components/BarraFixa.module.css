@@ -45,12 +45,12 @@
 }
 
 .botao {
-  width: min(100%, 480px);
+  width: min(100%, 520px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  height: 60px;
+  height: 62px;
   padding: 0 10px 0 22px;
   border-radius: 999px;
   background: var(--amarelo);

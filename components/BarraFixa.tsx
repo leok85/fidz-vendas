@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CADASTRO_URL, CTA } from "@/lib/links";
+import { ContagemCurta } from "./Contagem";
 import styles from "./BarraFixa.module.css";
 
 // Regra do design, igual em qualquer largura: aparece depois de 560px de rolagem e
@@ -42,7 +43,9 @@ export default function BarraFixa() {
         <a href={CADASTRO_URL} className={styles.botao}>
           <span className={styles.texto}>
             <span className={styles.cta}>{CTA}</span>
-            <span className={styles.sub}>30 dias grátis · sem cartão</span>
+            <span className={styles.sub}>
+              30 dias grátis termina em <ContagemCurta />
+            </span>
           </span>
           <span className={styles.seta} aria-hidden="true">
             →

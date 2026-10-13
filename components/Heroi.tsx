@@ -1,52 +1,81 @@
-import { CADASTRO_URL, CTA } from "@/lib/links";
-import { Aviso, FaixaRecompensa, Selos } from "./Cartela";
+import { CADASTRO_URL } from "@/lib/links";
+import { ContagemBlocos } from "./Contagem";
 import shared from "./shared.module.css";
 import styles from "./Heroi.module.css";
+
+const TIPOS = [
+  {
+    tipo: "Selos",
+    loja: "Padaria Trigo Dourado",
+    ganho: "+1 selo",
+    pct: "70%",
+    legenda: "7 de 10 selos · Café com pão na chapa",
+  },
+  {
+    tipo: "Pontos",
+    loja: "Barbearia Navalha",
+    ganho: "+45 pontos",
+    pct: "60%",
+    legenda: "180 de 300 pontos · Corte de cabelo",
+  },
+  {
+    tipo: "Cashback",
+    loja: "Café da Lagoa",
+    ganho: "+R$ 2,10 de cashback",
+    pct: null,
+    legenda: "Saldo R$ 12,60 · 5% de cada compra",
+  },
+];
 
 export default function Heroi() {
   return (
     <section id="heroi" className={styles.heroi}>
-      <div className={`${shared.bolha} ${styles.bolhaA}`} aria-hidden="true" />
-      <div className={`${shared.bolha} ${styles.bolhaB}`} aria-hidden="true" />
-
       <header className={`${shared.container} ${styles.topo}`}>
-        <div className={styles.logo}>
-          {/* WebP já otimizado e com tamanho fixo: <img> evita o JS do next/image. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/fidz-logo.webp" alt="Fidz" width={78} height={34} decoding="async" />
-        </div>
-        <span className={styles.publico}>Para estabelecimentos</span>
+        {/* WebP já otimizado e com tamanho fixo: <img> evita o JS do next/image. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/fidz-logo-branca.webp"
+          alt="Fidz"
+          width={131}
+          height={56}
+          decoding="async"
+          className={styles.logo}
+        />
       </header>
 
-      <div className={`${shared.container} ${styles.grade}`}>
-        <div className={styles.texto}>
-          <h1 className={styles.h1}>
-            Seu cliente comprou hoje. <span className={shared.destaque}>O Fidz faz ele voltar.</span>
-          </h1>
-          <p className={styles.lead}>
-            Cartão fidelidade com selos, pontos ou cashback no celular do cliente. Para padarias, cafés,
-            barbearias, salões e todo comércio de bairro.
-          </p>
-          <div className={styles.acao}>
-            <a href={CADASTRO_URL} className={shared.ctaAmarelo}>
-              {CTA} <span className={shared.seta} aria-hidden="true">→</span>
-            </a>
-            <span className={styles.garantia}>30 dias grátis · Sem cartão de crédito · Cancele quando quiser</span>
-          </div>
-        </div>
-
-        <div className={styles.cartelaWrap} aria-hidden="true">
-          <div className={styles.cartela}>
-            <Aviso texto="Mais um selo! Faltam 3 para o café com pão na chapa." />
-            <div className={styles.cartelaTopo}>
-              <span className={styles.cartelaTitulo}>Seus selos</span>
-              <span className={styles.cartelaConta}>7 de 10</span>
-            </div>
-            <Selos cheios={7} />
-            <FaixaRecompensa faltam="Faltam 3" />
-          </div>
-        </div>
+      <div className={styles.centro}>
+        <span className={styles.selo}>OFERTA</span>
+        <h1 className={styles.h1}>
+          30 dias grátis de Fidz <span className={shared.destaque}>só até 31 de outubro.</span>
+        </h1>
+        <p className={styles.lead}>
+          Fidelidade com selos, pontos ou cashback no celular do cliente. Cadastre agora e garanta o mês grátis.
+        </p>
+        <ContagemBlocos
+          classes={{ grade: styles.contagem, bloco: styles.bloco, valor: styles.blocoValor, rotulo: styles.blocoRotulo }}
+        />
+        <a href={CADASTRO_URL} className={`${shared.ctaAmarelo} ${styles.cta}`}>
+          Garantir meus 30 dias grátis <span className={shared.seta} aria-hidden="true">→</span>
+        </a>
       </div>
+
+      <ul className={`${shared.container} ${styles.tipos}`} aria-label="Exemplos de fidelidade">
+        {TIPOS.map((t) => (
+          <li key={t.tipo} className={styles.tipo}>
+            <div className={styles.tipoTopo}>
+              <span className={styles.tipoNome}>{t.tipo}</span>
+              <span className={styles.tipoLoja}>{t.loja}</span>
+            </div>
+            <span className={styles.tipoGanho}>{t.ganho}</span>
+            {t.pct && (
+              <div className={styles.barra} aria-hidden="true">
+                <div className={styles.barraCheia} style={{ width: t.pct }} />
+              </div>
+            )}
+            <span className={styles.tipoLegenda}>{t.legenda}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

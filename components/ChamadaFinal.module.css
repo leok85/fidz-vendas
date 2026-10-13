@@ -5,13 +5,17 @@
   overflow: hidden;
 }
 
-.bolha {
-  width: 520px;
-  height: 520px;
-  background: rgba(255, 255, 255, 0.06);
-  left: 50%;
-  top: -300px;
-  transform: translateX(-50%);
+.termina {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--tinta);
+  font-size: 13.5px;
+  font-weight: 700;
 }
 
 .conteudo {

@@ -1,4 +1,5 @@
 import { CADASTRO_URL, CTA, WHATSAPP_URL } from "@/lib/links";
+import { ContagemCurta } from "./Contagem";
 import PreferenciasCookies from "./PreferenciasCookies";
 import shared from "./shared.module.css";
 import styles from "./ChamadaFinal.module.css";
@@ -6,12 +7,14 @@ import styles from "./ChamadaFinal.module.css";
 export default function ChamadaFinal() {
   return (
     <section id="final" className={styles.fundo}>
-      <div className={`${shared.bolha} ${styles.bolha}`} aria-hidden="true" />
       <div className={styles.conteudo}>
+        <span className={styles.termina}>
+          30 dias grátis termina em <ContagemCurta />
+        </span>
         <h2 className={styles.titulo}>
           Seu próximo cliente fiel passa pelo balcão <span className={shared.destaque}>hoje</span>.
         </h2>
-        <p className={styles.lead}>Cadastro em poucos minutos. 30 dias grátis, sem cartão de crédito.</p>
+        <p className={styles.lead}>Selos, pontos ou cashback. Sem cartão de crédito para testar.</p>
         <a href={CADASTRO_URL} className={`${shared.ctaAmarelo} ${styles.cta}`}>
           {CTA} <span aria-hidden="true">→</span>
         </a>

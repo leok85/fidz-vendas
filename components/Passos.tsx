@@ -6,7 +6,7 @@ const PASSOS = [
   { titulo: "O cliente participa", texto: "No balcão, ele só informa o número de celular." },
   {
     titulo: "Cada compra vira benefício",
-    texto: "A equipe registra, o app avisa o cliente e ele volta para buscar a recompensa.",
+    texto: "A equipe registra, o app avisa o cliente e ele volta para usar.",
   },
 ];
 

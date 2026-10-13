@@ -18,8 +18,61 @@
   color: #fff;
   padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.topoTexto {
+  display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 600px;
+}
+
+.termina {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.terminaRotulo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contagem {
+  display: flex;
+  gap: 6px;
+}
+
+.bloco {
+  min-width: 58px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blocoValor {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  color: var(--amarelo);
+}
+
+.blocoRotulo {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .titulo {

@@ -3,10 +3,10 @@ import styles from "./Comparacao.module.css";
 
 const COMPARACAO = [
   { antes: "Fica na carteira até ser perdido", depois: "Fica no celular do cliente" },
+  { antes: "Só serve para carimbo", depois: "Selos, pontos ou cashback" },
   { antes: "Você não sabe quem é o cliente", depois: "Nome, celular e histórico de compras" },
   { antes: "Ninguém lembra o cliente de voltar", depois: "Aviso a cada ganho e antes do saldo vencer" },
   { antes: "Impossível saber quem parou de vir", depois: "O painel mostra quem voltou e quem sumiu" },
-  { antes: "Carimbo extra é fácil de fazer", depois: "Só a equipe da loja registra a compra" },
 ];
 
 export default function Comparacao() {
@@ -16,7 +16,7 @@ export default function Comparacao() {
         <h2 className={shared.h2}>O cartão de papel não traz ninguém de volta.</h2>
         <p className={shared.lead}>
           Ele fica esquecido na carteira, você não sabe quem é o cliente e ninguém avisa que falta pouco para a
-          recompensa. Veja a diferença.
+          recompensa.
         </p>
       </div>
 

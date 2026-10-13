@@ -2,6 +2,10 @@ import styles from "./Duvidas.module.css";
 
 const DUVIDAS = [
   [
+    "Qual a diferença entre selos, pontos e cashback?",
+    "Selos: o cliente junta um por compra até completar a cartela. Pontos: ganha conforme o valor gasto e troca por recompensas. Cashback: recebe uma porcentagem da compra como desconto para a próxima. Você escolhe na hora de montar a fidelidade.",
+  ],
+  [
     "Preciso comprar algum equipamento?",
     "Não. O balcão funciona em qualquer celular, tablet ou computador com navegador.",
   ],

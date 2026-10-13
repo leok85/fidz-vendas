@@ -85,10 +85,3 @@
 .seta {
   font-size: 19px;
 }
-
-/* Círculos decorativos dos blocos roxos */
-.bolha {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}

@@ -1,4 +1,5 @@
 import { CADASTRO_ESSENCIAL_URL, CTA } from "@/lib/links";
+import { ContagemBlocos } from "./Contagem";
 import shared from "./shared.module.css";
 import styles from "./Oferta.module.css";
 
@@ -29,8 +30,16 @@ export default function Oferta() {
     <section id="oferta" className={styles.secao}>
       <div className={styles.caixa}>
         <div className={styles.topo}>
-          <span className={shared.pill}>Oferta para começar</span>
-          <h2 className={styles.titulo}>Use o Fidz por 30 dias sem pagar nada.</h2>
+          <div className={styles.topoTexto}>
+            <span className={shared.pill}>Só até 31 de outubro</span>
+            <h2 className={styles.titulo}>Use o Fidz por 30 dias sem pagar nada.</h2>
+          </div>
+          <div className={styles.termina}>
+            <span className={styles.terminaRotulo}>Termina em</span>
+            <ContagemBlocos
+              classes={{ grade: styles.contagem, bloco: styles.bloco, valor: styles.blocoValor, rotulo: styles.blocoRotulo }}
+            />
+          </div>
         </div>
         <div className={styles.grade}>
           <div className={styles.incluidos}>
@@ -48,7 +57,7 @@ export default function Oferta() {
           </div>
           <div className={styles.preco}>
             <div className={styles.hoje}>
-              <span className={styles.precoRotulo}>Hoje</span>
+              <span className={styles.precoRotulo}>Cadastrando até 31/10</span>
               <span className={styles.zero}>R$ 0</span>
             </div>
             <div className={styles.depois}>
