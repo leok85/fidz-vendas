@@ -45,7 +45,8 @@ export function bootGoogleAds() {
 // é o cadastro concluído, que sai da Gestão depois que o banco confirma a loja.
 export function trackGoogleAdsLead() {
   if (!advertising || !LEAD_LABEL) return;
-  window.gtag?.("event", "conversion", { send_to: `${ADS_ID}/${LEAD_LABEL}` });
+  // Valor e moeda como no snippet da ação no Google Ads.
+  window.gtag?.("event", "conversion", { send_to: `${ADS_ID}/${LEAD_LABEL}`, value: 1.0, currency: "BRL" });
 }
 
 function start(id: string) {
