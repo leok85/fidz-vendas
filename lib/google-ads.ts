@@ -41,12 +41,36 @@ export function bootGoogleAds() {
   subscribeConsent(apply);
 }
 
+// Tempo máximo segurando a ida para a Gestão enquanto a conversão é enviada.
+const NAVIGATION_TIMEOUT_MS = 1000;
+
 // Clique para criar a conta na Gestão (o mesmo do Lead do Meta). Conversão secundária: a principal
 // é o cadastro concluído, que sai da Gestão depois que o banco confirma a loja.
-export function trackGoogleAdsLead() {
-  if (!advertising || !LEAD_LABEL) return;
+// O link sai desta página, e a navegação pode cortar o envio no meio. Como no gtag_report_conversion
+// do Google, o clique comum segura a navegação até o event_callback (ou o limite de tempo). Clique
+// com Ctrl/Cmd, botão do meio ou link em outra aba seguem normais, porque esta página não fecha.
+export function trackGoogleAdsLead(event: MouseEvent, link: HTMLAnchorElement) {
+  if (!advertising || !LEAD_LABEL || !window.gtag) return;
+  const sameTab =
+    !event.defaultPrevented &&
+    event.button === 0 &&
+    !(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) &&
+    (!link.target || link.target === "_self");
+
   // Sem valor nem moeda, como no snippet da ação no Google Ads.
-  window.gtag?.("event", "conversion", { send_to: `${ADS_ID}/${LEAD_LABEL}` });
+  const params: Record<string, unknown> = { send_to: `${ADS_ID}/${LEAD_LABEL}` };
+  if (sameTab) {
+    event.preventDefault();
+    let gone = false;
+    const go = () => {
+      if (gone) return;
+      gone = true;
+      window.location.href = link.href;
+    };
+    params.event_callback = go;
+    setTimeout(go, NAVIGATION_TIMEOUT_MS);
+  }
+  window.gtag("event", "conversion", params);
 }
 
 function start(id: string) {

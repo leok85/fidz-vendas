@@ -17,9 +17,9 @@ import { adEventForHref, bootAdvertising, trackAdEvent } from "@/lib/meta-pixel"
 import styles from "./CookieConsent.module.css";
 
 // Aviso de cookies e eventos de anúncio da landing. Quem liga e desliga o Meta Pixel e a tag do
-// Google Ads a partir da escolha salva são lib/meta-pixel.ts e lib/google-ads.ts. Os CTAs continuam <a> estáticos: um único listener
-// no documento manda Lead (cadastro) e Contact (WhatsApp) quando são clicados; o Lead também
-// vira a conversão secundária do Google Ads.
+// Google Ads a partir da escolha salva são lib/meta-pixel.ts e lib/google-ads.ts. Os CTAs continuam
+// <a> estáticos: um único listener no documento manda Lead (cadastro) e Contact (WhatsApp) quando
+// são clicados; o Lead também vira a conversão secundária do Google Ads.
 export default function CookieConsent() {
   const raw = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getServerConsentSnapshot);
   const [reaberto, setReaberto] = useState(false);
@@ -33,7 +33,7 @@ export default function CookieConsent() {
       if (!(link instanceof HTMLAnchorElement)) return;
       const adEvent = adEventForHref(link.href);
       if (adEvent) trackAdEvent(adEvent, { content_name: link.closest("[id]")?.id ?? "barra-fixa" });
-      if (adEvent === "Lead") trackGoogleAdsLead();
+      if (adEvent === "Lead") trackGoogleAdsLead(event, link);
     };
     document.addEventListener("click", onClick);
     const offOpen = onOpenCookiePreferences(() => setReaberto(true));
