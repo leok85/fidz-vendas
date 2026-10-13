@@ -1,7 +1,7 @@
 import { readConsent, subscribeConsent } from "@/lib/consent";
 
 const ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
-// Rótulo da conversão secundária "Clique para o cadastro" (o que vem depois da barra em
+// Rótulo da conversão secundária "Clique de saída" (o que vem depois da barra em
 // send_to: 'AW-…/rótulo'). Sem ele a tag carrega, mas o clique não vira conversão.
 const LEAD_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL;
 
@@ -45,8 +45,8 @@ export function bootGoogleAds() {
 // é o cadastro concluído, que sai da Gestão depois que o banco confirma a loja.
 export function trackGoogleAdsLead() {
   if (!advertising || !LEAD_LABEL) return;
-  // Valor e moeda como no snippet da ação no Google Ads.
-  window.gtag?.("event", "conversion", { send_to: `${ADS_ID}/${LEAD_LABEL}`, value: 1.0, currency: "BRL" });
+  // Sem valor nem moeda, como no snippet da ação no Google Ads.
+  window.gtag?.("event", "conversion", { send_to: `${ADS_ID}/${LEAD_LABEL}` });
 }
 
 function start(id: string) {
