@@ -66,8 +66,13 @@ export default function CookieConsent() {
       <h2 id={titleId} className={styles.titulo}>
         Podemos usar cookies?
       </h2>
-      <p className={styles.texto}>
+      {/* No celular vai a versão curta, para o aviso não cobrir metade da tela; o detalhe fica na
+          Política. */}
+      <p className={`${styles.texto} ${styles.textoLongo}`}>
         Só usamos cookies de {cookieKinds()} se você permitir. {purpose()} Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
+      </p>
+      <p className={`${styles.texto} ${styles.textoCurto}`}>
+        Só com a sua permissão: {shortPurpose()}. Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
       </p>
       <div className={styles.acoes}>
         <button type="button" onClick={() => decidir(false)} className={styles.rejeitar}>
@@ -84,6 +89,15 @@ export default function CookieConsent() {
 function cookieKinds(): string {
   if (MEASUREMENT_ENABLED && ADVERTISING_ENABLED) return "medição e de publicidade";
   return MEASUREMENT_ENABLED ? "medição" : "publicidade";
+}
+
+function shortPurpose(): string {
+  const uses: string[] = [];
+  if (MEASUREMENT_ENABLED) uses.push("medição desta página");
+  if (META_PIXEL_ENABLED && GOOGLE_ADS_ENABLED) uses.push("anúncios da Fidz no Facebook, no Instagram e no Google");
+  else if (GOOGLE_ADS_ENABLED) uses.push("anúncios da Fidz no Google");
+  else if (META_PIXEL_ENABLED) uses.push("anúncios da Fidz no Facebook e no Instagram");
+  return uses.join(" e ");
 }
 
 function purpose(): string {
