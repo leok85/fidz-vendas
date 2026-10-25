@@ -69,10 +69,10 @@ export default function CookieConsent() {
       {/* No celular vai a versão curta, para o aviso não cobrir metade da tela; o detalhe fica na
           Política. */}
       <p className={`${styles.texto} ${styles.textoLongo}`}>
-        Só usamos cookies de {cookieKinds()} se você permitir. {purpose()} Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
+        Só usamos cookies de {cookieKinds()} se você permitir. {purpose()} A escolha vale em todos os sites da Fidz: fidz.com.br, comece.fidz.com.br e a Gestão. Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
       </p>
       <p className={`${styles.texto} ${styles.textoCurto}`}>
-        Só com a sua permissão: {shortPurpose()}. Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
+        Só com a sua permissão: {shortPurpose()}. Vale em todos os sites da Fidz. Detalhes na <a href="https://fidz.com.br/privacidade">Política de Privacidade</a>.
       </p>
       <div className={styles.acoes}>
         <button type="button" onClick={() => decidir(false)} className={styles.rejeitar}>
