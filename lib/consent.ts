@@ -1,5 +1,10 @@
-// Escolha do visitante sobre cookies na landing. Fica no localStorage deste domínio e vale
-// 12 meses; depois disso, ou se a versão mudar, o aviso aparece de novo. As categorias opcionais são
+// Escolha do visitante sobre cookies na landing. Vale 12 meses; depois disso, ou se a versão mudar,
+// o aviso aparece de novo.
+//
+// A escolha vale em todos os sites da Fidz: fica no cookie fidz_cookie_consent, de .fidz.com.br, que
+// fidz.com.br e a Gestão leem e gravam do mesmo jeito (SHARED_*, abaixo; as três cópias precisam andar
+// juntas). Uma escolha só desta origem, feita antes do cookie, fica no localStorage e continua valendo
+// aqui, mas não vai para os outros sites: o aviso de antes não dizia que valeria lá. As categorias opcionais são
 // "Medição de uso" (PostHog, lib/analytics.ts) e "Publicidade" (Meta Pixel, lib/meta-pixel.ts, e tag
 // do Google Ads, lib/google-ads.ts). Mesmo modelo da Gestão.
 
@@ -27,6 +32,71 @@ export interface ConsentChoice {
 export interface CookieConsent extends ConsentChoice {
   decidedAt: string;
   version: number;
+}
+
+// The cookie shared by the Fidz sites. A category a site doesn't have stays out of what it writes, and
+// a site needs a value for each of its own categories, or it asks. SHARED_VERSION goes up, in the three
+// sites at once, when a category starts covering a new tool.
+const SHARED_COOKIE = "fidz_cookie_consent";
+const SHARED_VERSION = 1;
+const SHARED_DOMAIN = "fidz.com.br";
+
+interface SharedConsent {
+  measurement?: boolean;
+  advertising?: boolean;
+  decidedAt: string;
+  version: number;
+}
+
+function stillValid(decidedAt: string | undefined): boolean {
+  const expiresAt = new Date(decidedAt ?? "");
+  expiresAt.setMonth(expiresAt.getMonth() + VALIDITY_MONTHS);
+  return !Number.isNaN(expiresAt.getTime()) && Date.now() < expiresAt.getTime();
+}
+
+function readShared(): SharedConsent | null {
+  try {
+    const entry = document.cookie.split("; ").find((part) => part.startsWith(`${SHARED_COOKIE}=`));
+    if (!entry) return null;
+    const shared = JSON.parse(decodeURIComponent(entry.slice(SHARED_COOKIE.length + 1))) as Partial<SharedConsent>;
+    if (typeof shared.version !== "number" || shared.version < SHARED_VERSION || !stillValid(shared.decidedAt)) return null;
+    return shared as SharedConsent;
+  } catch {
+    return null;
+  }
+}
+
+// Only on a fidz.com.br address: on localhost or a preview URL the choice stays in localStorage.
+function writeShared(choice: ConsentChoice, decidedAt: string) {
+  try {
+    const host = window.location.hostname;
+    if (host !== SHARED_DOMAIN && !host.endsWith(`.${SHARED_DOMAIN}`)) return;
+    const previous = readShared();
+    const shared: SharedConsent = {
+      measurement: MEASUREMENT_ENABLED ? choice.measurement : previous?.measurement,
+      advertising: ADVERTISING_ENABLED ? choice.advertising : previous?.advertising,
+      decidedAt,
+      version: SHARED_VERSION,
+    };
+    const maxAge = VALIDITY_MONTHS * 31 * 24 * 60 * 60;
+    document.cookie = `${SHARED_COOKIE}=${encodeURIComponent(JSON.stringify(shared))}; Domain=.${SHARED_DOMAIN}; Path=/; Max-Age=${maxAge}; SameSite=Lax; Secure`;
+  } catch {
+    // Sem cookie: fica a escolha do localStorage.
+  }
+}
+
+// The shared choice, when it answers every category this site has, in this site's own format.
+function sharedRaw(): string | null {
+  const shared = readShared();
+  if (!shared) return null;
+  if (MEASUREMENT_ENABLED && typeof shared.measurement !== "boolean") return null;
+  if (ADVERTISING_ENABLED && typeof shared.advertising !== "boolean") return null;
+  return JSON.stringify({
+    measurement: MEASUREMENT_ENABLED && shared.measurement === true,
+    advertising: ADVERTISING_ENABLED && shared.advertising === true,
+    decidedAt: shared.decidedAt,
+    version: CONSENT_VERSION,
+  });
 }
 
 const changeListeners = new Set<() => void>();
@@ -69,16 +139,18 @@ export function parseConsent(raw: string | null | undefined): CookieConsent | nu
 }
 
 export function readConsent(): CookieConsent | null {
-  return parseConsent(readRaw());
+  return parseConsent(getConsentSnapshot());
 }
 
 export function saveConsent({ measurement, advertising }: ConsentChoice) {
+  const decidedAt = new Date().toISOString();
   const raw = JSON.stringify({
     measurement: MEASUREMENT_ENABLED && measurement,
     advertising: ADVERTISING_ENABLED && advertising,
-    decidedAt: new Date().toISOString(),
+    decidedAt,
     version: CONSENT_VERSION,
   });
+  writeShared({ measurement, advertising }, decidedAt);
   memoryFallback = raw;
   try {
     window.localStorage.setItem(STORAGE_KEY, raw);
@@ -89,20 +161,29 @@ export function saveConsent({ measurement, advertising }: ConsentChoice) {
 }
 
 // Assinatura no formato do useSyncExternalStore. O evento "storage" traz a escolha feita em outra aba.
+// Um cookie mudado em outro site da Fidz não avisa: a escolha é lida de novo quando a aba volta a
+// ficar visível.
 export function subscribeConsent(listener: () => void) {
   const onStorage = (event: StorageEvent) => {
     if (event.key === STORAGE_KEY || event.key === null) listener();
   };
+  const onVisible = () => {
+    if (document.visibilityState === "visible") listener();
+  };
   changeListeners.add(listener);
   window.addEventListener("storage", onStorage);
+  document.addEventListener("visibilitychange", onVisible);
   return () => {
     changeListeners.delete(listener);
     window.removeEventListener("storage", onStorage);
+    document.removeEventListener("visibilitychange", onVisible);
   };
 }
 
+// The shared cookie first, when it answers this site's categories; otherwise this origin's own choice.
+// A string, so useSyncExternalStore sees the same snapshot until something changes.
 export function getConsentSnapshot(): string | null {
-  return readRaw();
+  return sharedRaw() ?? readRaw();
 }
 
 // No servidor a escolha é desconhecida (undefined), diferente de "ainda não escolheu" (null):
