@@ -18,6 +18,10 @@ const DUVIDAS = [
     "Não. É um desconto que a sua loja concede para as próximas compras nela. Ninguém saca, e nenhum dinheiro passa pelo Fidz.",
   ],
   [
+    "E se eu não gostar?",
+    "Você tem 7 dias de garantia. Paga no cadastro, com cartão, Pix ou boleto, e se desistir nesse prazo devolvemos o valor integral do primeiro pagamento, inclusive no plano anual.",
+  ],
+  [
     "Posso cancelar depois?",
     "A qualquer momento, pelo painel e sem multa. Clientes com saldo continuam podendo usar o que juntaram por pelo menos 30 dias.",
   ],

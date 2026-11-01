@@ -56,41 +56,6 @@
   text-wrap: pretty;
 }
 
-.contagem {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(8px, 2vw, 14px);
-  width: min(560px, 100%);
-}
-
-.bloco {
-  background: #fff;
-  color: var(--tinta);
-  border-radius: 18px;
-  padding: clamp(12px, 2.4vw, 18px) 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.blocoValor {
-  font-size: clamp(32px, 6vw, 52px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  color: var(--roxo);
-}
-
-.blocoRotulo {
-  font-size: 11.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--texto-3);
-}
-
 .centro .cta {
   height: 64px;
   /* Mais específico que shared.ctaAmarelo. Em telas estreitas encolhe para caber numa linha. */
