@@ -19,7 +19,7 @@ const DUVIDAS = [
   ],
   [
     "E se eu não gostar?",
-    "Você tem 7 dias de garantia. Paga no cadastro, com cartão, Pix ou boleto, e se desistir nesse prazo devolvemos o valor integral do primeiro pagamento, inclusive no plano anual. Você pede em Plano e cobrança, no painel, ou pelo suporte.",
+    "Você tem 7 dias de garantia. Paga no cadastro, com cartão, Pix ou boleto, e se desistir nesse prazo devolvemos o valor integral do primeiro pagamento, inclusive no plano anual. Você pede pelo suporte.",
   ],
   [
     "Posso cancelar depois?",
