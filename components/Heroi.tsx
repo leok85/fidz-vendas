@@ -1,5 +1,4 @@
-import { CADASTRO_URL } from "@/lib/links";
-import { ContagemBlocos } from "./Contagem";
+import { CADASTRO_URL, CTA } from "@/lib/links";
 import shared from "./shared.module.css";
 import styles from "./Heroi.module.css";
 
@@ -44,18 +43,16 @@ export default function Heroi() {
       </header>
 
       <div className={styles.centro}>
-        <span className={styles.selo}>OFERTA</span>
+        <span className={styles.selo}>GARANTIA</span>
         <h1 className={styles.h1}>
-          30 dias grátis de Fidz <span className={shared.destaque}>só até 31 de outubro.</span>
+          7 dias de garantia: <span className={shared.destaque}>não gostou, devolvemos seu dinheiro.</span>
         </h1>
         <p className={styles.lead}>
-          Fidelidade com selos, pontos ou cashback no celular do cliente. Cadastre agora e garanta o mês grátis.
+          Fidelidade com selos, pontos ou cashback no celular do cliente, a partir de R$ 99/mês. Use por 7 dias e,
+          se não gostar, devolvemos o valor integral.
         </p>
-        <ContagemBlocos
-          classes={{ grade: styles.contagem, bloco: styles.bloco, valor: styles.blocoValor, rotulo: styles.blocoRotulo }}
-        />
         <a href={CADASTRO_URL} className={`${shared.ctaAmarelo} ${styles.cta}`}>
-          Garantir meus 30 dias grátis <span className={shared.seta} aria-hidden="true">→</span>
+          {CTA} <span className={shared.seta} aria-hidden="true">→</span>
         </a>
       </div>
 

@@ -1,5 +1,4 @@
 import { CADASTRO_ESSENCIAL_URL, CTA } from "@/lib/links";
-import { ContagemBlocos } from "./Contagem";
 import shared from "./shared.module.css";
 import styles from "./Oferta.module.css";
 
@@ -12,7 +11,7 @@ const INCLUIDOS = [
 ];
 
 const GARANTIAS = [
-  "Sem cartão de crédito para testar",
+  "7 dias de garantia, com reembolso integral",
   "Sem multa para cancelar",
   "Mensalidade fixa, sem cobrança por uso",
 ];
@@ -31,14 +30,8 @@ export default function Oferta() {
       <div className={styles.caixa}>
         <div className={styles.topo}>
           <div className={styles.topoTexto}>
-            <span className={shared.pill}>Só até 31 de outubro</span>
-            <h2 className={styles.titulo}>Use o Fidz por 30 dias sem pagar nada.</h2>
-          </div>
-          <div className={styles.termina}>
-            <span className={styles.terminaRotulo}>Termina em</span>
-            <ContagemBlocos
-              classes={{ grade: styles.contagem, bloco: styles.bloco, valor: styles.blocoValor, rotulo: styles.blocoRotulo }}
-            />
+            <span className={shared.pill}>7 dias de garantia</span>
+            <h2 className={styles.titulo}>Assine o Fidz e use 7 dias sem risco.</h2>
           </div>
         </div>
         <div className={styles.grade}>
@@ -57,17 +50,19 @@ export default function Oferta() {
           </div>
           <div className={styles.preco}>
             <div className={styles.hoje}>
-              <span className={styles.precoRotulo}>Cadastrando até 31/10</span>
-              <span className={styles.zero}>R$ 0</span>
-            </div>
-            <div className={styles.depois}>
-              <span className={styles.precoRotulo}>Depois dos 30 dias, se quiser continuar</span>
-              <span className={styles.mensal}>
-                R$ 99/mês <span className={styles.porDia}>· menos de R$ 3,30 por dia</span>
+              <span className={styles.precoRotulo}>Plano Essencial, 1 loja</span>
+              <span className={styles.valor}>
+                R$ 99<span className={styles.mes}>/mês</span>
               </span>
               <span className={styles.planos}>
-                Plano Essencial, 1 loja. Até 5 lojas: R$ 199/mês. 6 ou mais: R$ 499/mês.
+                Menos de R$ 3,30 por dia. Até 5 lojas: R$ 199/mês. 6 ou mais: R$ 499/mês. Pague com cartão, Pix ou
+                boleto.
               </span>
+            </div>
+            <div className={styles.depois}>
+              <span className={styles.precoRotulo}>Não gostou nos primeiros 7 dias?</span>
+              <span className={styles.mensal}>Devolvemos seu dinheiro</span>
+              <span className={styles.planos}>Reembolso integral do 1º pagamento, inclusive no plano anual.</span>
             </div>
             <a href={CADASTRO_ESSENCIAL_URL} className={styles.cta}>
               {CTA} <span aria-hidden="true">→</span>

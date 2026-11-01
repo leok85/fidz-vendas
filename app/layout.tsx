@@ -12,7 +12,7 @@ const poppins = Poppins({
 
 const TITLE = "Fidz · Cartão fidelidade digital para o seu comércio";
 const DESCRIPTION =
-  "Cartão fidelidade com selos, pontos ou cashback no celular do cliente. Para padarias, cafés, barbearias, salões e todo comércio de bairro. 30 dias grátis, sem cartão de crédito.";
+  "Cartão fidelidade com selos, pontos ou cashback no celular do cliente. Para padarias, cafés, barbearias, salões e todo comércio de bairro. 7 dias de garantia: não gostou, devolvemos seu dinheiro.";
 
 export const metadata: Metadata = {
   title: TITLE,
