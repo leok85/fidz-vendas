@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useState, useSyncExternalStore } from "react";
-import { bootMeasurement, trackCtaClick } from "@/lib/analytics";
+import { bootMeasurement, trackCtaClick, withVisitorId } from "@/lib/analytics";
 import {
   ADVERTISING_ENABLED,
   CONSENT_ENABLED,
@@ -41,7 +41,11 @@ export default function CookieConsent() {
       const location = link.closest("[id]")?.id ?? "barra-fixa";
       trackCtaClick(location, adEvent === "Lead" ? "cadastro" : "whatsapp");
       trackAdEvent(adEvent, { content_name: location });
-      if (adEvent === "Lead") trackGoogleAdsLead(event, link);
+      if (adEvent === "Lead") {
+        // Antes do Google Ads, que pode segurar a navegação e seguir depois pelo link.href.
+        link.href = withVisitorId(link.href);
+        trackGoogleAdsLead(event, link);
+      }
     };
     document.addEventListener("click", onClick);
     const offOpen = onOpenCookiePreferences(() => setReaberto(true));
