@@ -34,6 +34,16 @@ export function trackCtaClick(location: string, destination: "cadastro" | "whats
   if (measuring) posthog?.capture("cta_clicked", { location, destination });
 }
 
+// Link do cadastro com o identificador anônimo desta visita (?ph_did=). Cada site guarda o do PostHog
+// só no próprio localStorage; a Gestão lê o parâmetro, tira da URL e segue com ele, para o funil ver
+// a visita aqui e o cadastro lá como a mesma pessoa. Sem a medição aceita, o link fica como está.
+export function withVisitorId(href: string): string {
+  if (!measuring || !posthog?.__loaded) return href;
+  const url = new URL(href);
+  url.searchParams.set("ph_did", posthog.get_distinct_id());
+  return url.toString();
+}
+
 function start(key: string) {
   import("posthog-js")
     .then(({ default: client }) => {
