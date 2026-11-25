@@ -1,4 +1,4 @@
-import { CADASTRO_ESSENCIAL_URL, CTA } from "@/lib/links";
+import { CADASTRO_URL, CTA } from "@/lib/links";
 import shared from "./shared.module.css";
 import styles from "./Oferta.module.css";
 
@@ -50,21 +50,21 @@ export default function Oferta() {
           </div>
           <div className={styles.preco}>
             <div className={styles.hoje}>
-              <span className={styles.precoRotulo}>Plano Essencial, 1 loja</span>
+              <span className={styles.precoRotulo}>Por unidade (loja)</span>
               <span className={styles.valor}>
                 R$ 99<span className={styles.mes}>/mês</span>
               </span>
               <span className={styles.planos}>
-                Menos de R$ 3,30 por dia. Até 5 lojas: R$ 199/mês. 6 ou mais: R$ 499/mês. Pague com cartão, Pix ou
-                boleto.
+                Cada unidade a mais soma R$ 99/mês, sem limite. No anual, R$ 79,20/mês por unidade (20% de
+                desconto). Pague com cartão, Pix ou boleto.
               </span>
             </div>
             <div className={styles.depois}>
               <span className={styles.precoRotulo}>Não gostou nos primeiros 7 dias?</span>
               <span className={styles.mensal}>Devolvemos seu dinheiro</span>
-              <span className={styles.planos}>Reembolso integral do 1º pagamento, inclusive no plano anual.</span>
+              <span className={styles.planos}>Reembolso integral do 1º pagamento, inclusive no anual.</span>
             </div>
-            <a href={CADASTRO_ESSENCIAL_URL} className={styles.cta}>
+            <a href={CADASTRO_URL} className={styles.cta}>
               {CTA} <span aria-hidden="true">→</span>
             </a>
             <ul className={styles.garantias}>

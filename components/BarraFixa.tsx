@@ -42,7 +42,7 @@ export default function BarraFixa() {
         <a href={CADASTRO_URL} className={styles.botao}>
           <span className={styles.texto}>
             <span className={styles.cta}>{CTA}</span>
-            <span className={styles.sub}>7 dias de garantia · a partir de R$ 99/mês</span>
+            <span className={styles.sub}>7 dias de garantia · R$ 99 por unidade/mês</span>
           </span>
           <span className={styles.seta} aria-hidden="true">
             →
