@@ -48,7 +48,7 @@ export default function Heroi() {
           7 dias de garantia: <span className={shared.destaque}>não gostou, devolvemos seu dinheiro.</span>
         </h1>
         <p className={styles.lead}>
-          Fidelidade com selos, pontos ou cashback no celular do cliente, a partir de R$ 99/mês. Use por 7 dias e,
+          Fidelidade com selos, pontos ou cashback no celular do cliente. R$ 99 por unidade/mês. Use por 7 dias e,
           se não gostar, devolvemos o valor integral.
         </p>
         <a href={CADASTRO_URL} className={`${shared.ctaAmarelo} ${styles.cta}`}>

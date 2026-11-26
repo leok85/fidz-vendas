@@ -11,7 +11,7 @@ export default function ChamadaFinal() {
         <h2 className={styles.titulo}>
           Seu próximo cliente fiel passa pelo balcão <span className={shared.destaque}>hoje</span>.
         </h2>
-        <p className={styles.lead}>Selos, pontos ou cashback, a partir de R$ 99/mês. Pague com cartão, Pix ou boleto.</p>
+        <p className={styles.lead}>Selos, pontos ou cashback, R$ 99 por unidade/mês. Pague com cartão, Pix ou boleto.</p>
         <a href={CADASTRO_URL} className={`${shared.ctaAmarelo} ${styles.cta}`}>
           {CTA} <span aria-hidden="true">→</span>
         </a>

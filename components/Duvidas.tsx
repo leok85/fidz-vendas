@@ -19,7 +19,11 @@ const DUVIDAS = [
   ],
   [
     "E se eu não gostar?",
-    "Você tem 7 dias de garantia. Paga no cadastro, com cartão, Pix ou boleto, e se desistir nesse prazo devolvemos o valor integral do primeiro pagamento, inclusive no plano anual. Você pede pelo suporte.",
+    "Você tem 7 dias de garantia. Paga no cadastro, com cartão, Pix ou boleto, e se desistir nesse prazo devolvemos o valor integral do primeiro pagamento, inclusive no anual. Você pede pelo suporte.",
+  ],
+  [
+    "Tenho mais de uma loja. Como fica o preço?",
+    "Cada unidade (loja) custa R$ 99 por mês, e cada uma que você adicionar soma R$ 99. Não há faixas nem limite de unidades. Você começa com 1 e adiciona as outras depois, no painel. No anual, cada unidade sai por R$ 79,20 por mês (20% de desconto). Se adicionar uma unidade no meio do ciclo, cobramos só o proporcional: no mensal ele entra na próxima fatura, no anual é cobrado na hora, pelos meses que faltam.",
   ],
   [
     "Posso cancelar depois?",
